@@ -35,22 +35,55 @@ class App extends Component {
   }
 
   setChartData(numbers){
+    var xAxisLabels = [];
+    var barColors = [];
+    var hoverBarColors = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+      xAxisLabels.push(i + 1); // Pushes labels counting up from 1 to the length of the data
+
+      switch (i % 7) { // Pushes ROYGBIV colors to barColors
+        case 0:
+          barColors.push('rgba(209, 0, 0, 0.6'); // Red
+          hoverBarColors.push('rgba(209, 0, 0, 1');
+          break;
+        case 1:
+          barColors.push('rgba(255, 102, 34, 0.6'); // Orange
+          hoverBarColors.push('rgba(255, 102, 34, 1');
+          break;
+        case 2:
+          barColors.push('rgba(255, 218, 33, 0.6'); // Yellow
+          hoverBarColors.push('rgba(255, 218, 33, 1');
+          break;
+        case 3:
+          barColors.push('rgba(51, 221, 0, 0.6'); // Green
+          hoverBarColors.push('rgba(51, 221, 0, 1');
+          break;
+        case 4:
+          barColors.push('rgba(17, 51, 204, 0.6'); // Blue
+          hoverBarColors.push('rgba(17, 51, 204, 1');
+          break;
+        case 5:
+          barColors.push('rgba(34, 0, 102, 0.6'); // Indigo
+          hoverBarColors.push('rgba(34, 0, 102, 1');
+          break;
+        case 6:
+          barColors.push('rgba(51, 0, 68, 0.6'); // Violet
+          hoverBarColors.push('rgba(51, 0, 68, 1');
+          break;
+      }
+    }
+
     this.setState({
       chartData: {
-        labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+        labels: xAxisLabels,
         datasets: [{
             label: 'Values',
             data: numbers,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 99, 132, 0.6)',
-            ],
+            backgroundColor: barColors,
             borderWidth:1,
             borderColor:'#777',
+            hoverBackgroundColor: hoverBarColors,
             hoverBorderWidth:2,
             hoverBorderColor:'#000'
         }]
