@@ -2,32 +2,39 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Chart from './components/Chart';
+import RefreshDataButton from './components/RefreshDataButton';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      chartData:{}
+      chartData:{},
+      buttonDisabled: true
     };
-
   }
 
-  componentWillMount(){
-    this.getData((numbers) => {
-      console.log(numbers);
-      this.getChartData(numbers);
+  componentWillMount() {
+    this.getRandomNumbersData((numbers) => {
+      this.setChartData(numbers);
     });
   }
 
-  getData(callback) {
+  handleRefreshDataClick() {
+    this.setState({buttonDisabled: true});
+    this.getRandomNumbersData((numbers) => {
+      this.setChartData(numbers);
+    });
+  }
+
+  getRandomNumbersData(callback) {
     fetch('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
       .then((res) => res.json())
       .then((data) => {
-        callback(data.data);
+        callback(data.data); //Data.data is where the array of numbers are stored in the JSON object
       })
   }
 
-  getChartData(numbers){
+  setChartData(numbers){
     this.setState({
       chartData: {
         labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
@@ -44,11 +51,12 @@ class App extends Component {
             ],
             borderWidth:1,
             borderColor:'#777',
-            hoverBorderWidth:3,
+            hoverBorderWidth:2,
             hoverBorderColor:'#000'
         }]
-    }
-    })
+      },
+      buttonDisabled: false
+    });
   }
 
   render() {
@@ -59,6 +67,9 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <Chart chartData={this.state.chartData} />
+        <RefreshDataButton
+          handleClick={this.handleRefreshDataClick.bind(this)}
+          buttonDisabled={this.state.buttonDisabled}/>
       </div>
     );
   }
