@@ -10,7 +10,7 @@ class Chart extends Component{
     }
     render(){
         return(
-            <div className="chart">
+            <div className="chart-container">
                 <Bar
                     data={this.props.chartData}
                     options={{

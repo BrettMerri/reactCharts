@@ -14,6 +14,10 @@ class App extends Component {
   }
 
   componentWillMount() {
+    this.updateChartData();
+  }
+
+  updateChartData() {
     this.getRandomNumbersData((numbers) => {
       this.setChartData(numbers);
     });
@@ -21,9 +25,7 @@ class App extends Component {
 
   handleRefreshDataClick() {
     this.setState({buttonDisabled: true});
-    this.getRandomNumbersData((numbers) => {
-      this.setChartData(numbers);
-    });
+    this.updateChartData();
   }
 
   getRandomNumbersData(callback) {
@@ -42,7 +44,7 @@ class App extends Component {
     for (let i = 0; i < numbers.length; i++) {
       xAxisLabels.push(i + 1); // Pushes labels counting up from 1 to the length of the data
 
-      switch (i % 7) { // Pushes ROYGBIV colors to barColors
+      switch (i % 7) { // Pushes ROYGBIV colors to barColors and hoverBarColors
         case 0:
           barColors.push('rgba(209, 0, 0, 0.6'); // Red
           hoverBarColors.push('rgba(209, 0, 0, 1');
@@ -71,6 +73,7 @@ class App extends Component {
           barColors.push('rgba(51, 0, 68, 0.6'); // Violet
           hoverBarColors.push('rgba(51, 0, 68, 1');
           break;
+        default:
       }
     }
 
