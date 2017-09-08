@@ -16,7 +16,7 @@ class Chart extends Component{
                 options={{
                     title: {
                         display:true,
-                        text:'Random Numbers',
+                        text:'Random Numbers 0-255',
                         fontSize:20
                     },
                     legend: {
@@ -25,7 +25,8 @@ class Chart extends Component{
                     scales: {
                         yAxes: [{
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                max: 300
                             }
                         }]
                     }
