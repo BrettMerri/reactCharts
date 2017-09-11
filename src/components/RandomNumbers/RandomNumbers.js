@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-import Chart from './components/Chart/Chart';
-import RefreshDataButton from './components/RefreshDataButton/RefreshDataButton';
-import ChartLoadingOverlay from './components/ChartLoadingOverlay/ChartLoadingOverlay';
+import '../App/App.css';
+import ChartContainer from './ChartContainer/ChartContainer'
+import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 
-class App extends Component {
+class RandomNumbers extends Component {
   constructor(){
     super();
     this.state = {
       chartData:{},
-      chartLoading: true,
-      lolRank: ""
+      chartLoading: true
     };
   }
 
@@ -96,19 +94,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="chart-container">
-          <Chart chartData={this.state.chartData} />
-          <ChartLoadingOverlay chartLoading={this.state.chartLoading} />
-        </div>
+      <div className="RandomNumbers">
+        <ChartContainer
+          chartData={this.state.chartData}
+          chartLoading={this.state.chartLoading}
+        />
         <RefreshDataButton
           handleClick={this.handleRefreshDataClick.bind(this)}
           chartLoading={this.state.chartLoading}
         />
-        <p>{this.state.lolRank}</p>
       </div>
     );
   }
 }
 
-export default App;
+export default RandomNumbers;
