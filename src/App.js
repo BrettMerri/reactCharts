@@ -3,14 +3,14 @@ import './App.css';
 import Chart from './components/Chart/Chart';
 import RefreshDataButton from './components/RefreshDataButton/RefreshDataButton';
 import ChartLoadingOverlay from './components/ChartLoadingOverlay/ChartLoadingOverlay';
-import keys from './keys/keys';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       chartData:{},
-      chartLoading: true
+      chartLoading: true,
+      lolRank: ""
     };
   }
 
@@ -27,12 +27,6 @@ class App extends Component {
   handleRefreshDataClick() {
     this.setState({chartLoading: true});
     this.updateChartData();
-  }
-
-  getLolData(callback) {
-    fetch(`https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/RiotSchmick?api_key=${keys.lol}`)
-      .then((res) => res.json())
-      .then((data) => callback(data.data));
   }
 
   getRandomNumbersData(callback) {
@@ -111,6 +105,7 @@ class App extends Component {
           handleClick={this.handleRefreshDataClick.bind(this)}
           chartLoading={this.state.chartLoading}
         />
+        <p>{this.state.lolRank}</p>
       </div>
     );
   }

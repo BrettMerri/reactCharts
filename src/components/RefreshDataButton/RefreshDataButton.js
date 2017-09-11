@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 
-class RefreshDataButton extends Component{
-    render(){
-        return(
-            <button className="btn btn-default" onClick={this.props.handleClick} disabled={this.props.chartLoading}>Refresh</button>
-        )
-    }
+const RefreshDataButton = (props) => {
+    return(
+        <button className="btn btn-default"
+            onClick={props.handleClick}
+            disabled={props.chartLoading}>
+            Refresh
+        </button>
+    )
 }
 
 export default RefreshDataButton;
