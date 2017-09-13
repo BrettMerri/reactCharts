@@ -28,9 +28,9 @@ class RandomNumbers extends Component {
   }
 
   getRandomNumbersData(callback) {
-    fetch('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
+    fetch('/api/randomnumbers/count/15')
       .then(res => res.json())
-      .then(data => callback(data.data)); // Data.data is where the array of numbers are stored in the JSON object
+      .then(data => callback(data)); // Data.data is where the array of numbers are stored in the JSON object
   }
 
   setChartData(numbers){

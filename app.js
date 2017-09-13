@@ -23,7 +23,7 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error: ' + err);
 });
 
-const gameapi = require('./routes/game-api');
+const api = require('./routes/api');
 
 const app = express();
 
@@ -37,7 +37,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Game API's
-app.use('/game-api', gameapi);
+app.use('/api', api);
 
 // Index Route
 app.get('/', (req, res) => {
