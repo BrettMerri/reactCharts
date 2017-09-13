@@ -15,10 +15,16 @@ router.get('/lol/username/:username', (req, res) => {
         // If user doesn't exist add user to Mongo DB
         if(!user) {
             UserModel.addUserByDisplayName(displayName, (err, user) => {
-                res.json({msg: 'User created', accountId: user.accountId});
+                if(err) throw err;
+                
+                // If user does not exist via display name from API
+                if(typeof user === 'undefined') {
+                    return res.json({"Error" : "Invalid display name"});
+                }
+                return res.json({msg: 'User created', 'displayName': user.displayName, summonerId: user.summonerId});
             });
         } else {
-            res.json({msg: 'User exists', accountId: user.accountId});
+            return res.json({msg: 'User exists', 'displayName': user.displayName, summonerId: user.summonerId});
         }
     });
 });

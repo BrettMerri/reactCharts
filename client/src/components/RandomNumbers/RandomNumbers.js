@@ -20,9 +20,6 @@ class RandomNumbers extends Component {
     this.getRandomNumbersData(numbers => {
       this.setChartData(numbers);
     });
-    this.getLolData(data => {
-      console.log(data);
-    })
   }
 
   handleRefreshDataClick() {
@@ -34,12 +31,6 @@ class RandomNumbers extends Component {
     fetch('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
       .then(res => res.json())
       .then(data => callback(data.data)); // Data.data is where the array of numbers are stored in the JSON object
-  }
-
-  getLolData(callback) {
-    fetch('/game-api/lol/username/BrettMerri')
-      .then(res => res.json())
-      .then(data => callback(data));
   }
 
   setChartData(numbers){

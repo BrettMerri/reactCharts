@@ -5,6 +5,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
+// Change Mongoose Promose Library from Bluebird to ES6
+mongoose.Promise = global.Promise;
+
 // Connect To Database
 mongoose.connect(config.database, {
     useMongoClient: true
