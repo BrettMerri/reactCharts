@@ -16,6 +16,9 @@ const Navbar = () => (
         <li className="nav-item">
           <NavLink to='/random-numbers' className="nav-link" activeClassName="active">Random Numbers</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to='/lol' className="nav-link" activeClassName="active">LoL</NavLink>
+        </li>
       </ul>
     </div>
   </nav>

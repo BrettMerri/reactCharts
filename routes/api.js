@@ -5,8 +5,12 @@ const apikeys = require('../config/apikeys');
 const fetch = require('node-fetch');
 const LolData = require('../models/lolData');
 
-router.get('/lol/displayname/:displayName', (req, res) => {
+router.get('/lol/displayname/:displayName?', (req, res) => {
     let displayName = req.params.displayName;
+
+    if (!displayName) {
+        return res.json({"Error": "No display name provided"});
+    }
 
     // Gets lolData by displayName from MongoDB
     LolData.getUserByDisplayName(displayName, (err, lolData) => { 

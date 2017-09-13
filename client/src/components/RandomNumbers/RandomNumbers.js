@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import '../App/App.css';
+import { connect } from 'react-redux';
+import { fetchChartData } from '../../actions/chart'
 import ChartContainer from './ChartContainer/ChartContainer'
 import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 
 class RandomNumbers extends Component {
-  constructor(){
-    super();
-    this.state = {
-      chartData:{},
-      chartLoading: true
-    };
-  }
-
-  componentWillMount() {
+/*
+  componentDidMount() {
     this.updateChartData();
   }
 
@@ -30,7 +25,7 @@ class RandomNumbers extends Component {
   getRandomNumbersData(callback) {
     fetch('/api/randomnumbers/count/15')
       .then(res => res.json())
-      .then(data => callback(data)); // Data.data is where the array of numbers are stored in the JSON object
+      .then(data => callback(data));
   }
 
   setChartData(numbers){
@@ -106,6 +101,43 @@ class RandomNumbers extends Component {
       </div>
     );
   }
+
+*/
+
+  componentDidMount() {
+    this.props.fetchData();
+  }
+
+  render() {
+    if (this.props.hasErrored) {
+      return <p>Sorry! There was an error loading the items</p>;
+    }
+
+    if (this.props.isLoading) {
+        return <p>Loading…</p>;
+    }
+
+    return (
+        <ul>
+            {alert(this.props.numbers)}
+        </ul>
+    );
+  }
 }
 
-export default RandomNumbers;
+
+const mapStateToProps = (state) => {
+  return {
+      numbers: state.chartData,
+      hasErrored: state.itemsHasErrored,
+      isLoading: state.chartIsLoading
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchData: () => dispatch(fetchChartData())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomNumbers);
