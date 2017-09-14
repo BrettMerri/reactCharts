@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import '../App/App.css';
 import { connect } from 'react-redux';
-import { fetchChartData } from '../../actions/chart'
+import { fetchChartData } from '../../../../actions/chart'
 import ChartContainer from './ChartContainer/ChartContainer'
 import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 

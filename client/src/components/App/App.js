@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import Main from '../Main/Main';
+import Main from './Main/Main';
+import Layout from './Layout/Layout'
 
 const App = () => (
-  <div>
-    <Navbar />
+  <Layout>
     <Main />
-  </div>
+  </Layout>
 );
 
 export default App;

@@ -1,5 +1,16 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-  margin: 0;
+  margin: 0 0 60px;
   padding: 0;
   font-family: sans-serif;
+  background-color:#FCFCFC;
+}
+
+.container.main {
+  background-color:#f5f5f5;
+  padding: 20px 10px;
+  outline: 1px solid #DDDDDD;
 }

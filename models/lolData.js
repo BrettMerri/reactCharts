@@ -23,11 +23,11 @@ module.exports.addUserByDisplayName = (displayName, callback) => {
     .then(data => {
 
         // If the summoner is not found via the API callback without returning LolData
-        if (typeof(data.status) !== 'undefined' &&
-            data.status.message == 'Data not found - summoner not found') {
+        if (typeof(data.status) !== 'undefined') {
             callback();
         }
         else { // If summoner is found save LolData to MongoDB and return LolData in callback
+            
             let newLolData = new LolData({
                 displayName: data.name,
                 summonerId: data.id

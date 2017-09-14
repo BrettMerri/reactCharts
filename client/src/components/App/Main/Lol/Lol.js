@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLolData } from '../../actions/lol';
+import { fetchLolData } from '../../../../actions/lol';
 import LolForm from './LolForm/LolForm';
 
 class Lol extends Component {

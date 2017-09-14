@@ -2,9 +2,8 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 const LolForm = (props) => {
-    const { handleSubmit } = props
     return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={props.handleSubmit}>
         <label>Display Name</label>
         <div>
             <Field
