@@ -18,10 +18,10 @@ export function chartIsLoading(state = false, action) {
     }
 }
 
-export function numbers(state = [], action) {
+export function numbers(state = {}, action) {
     switch (action.type) {
-        case 'CHART_FETCH_NUMBERS_SUCCESS':
-            return action.numbers;
+        case 'CHART_FETCH_CHART_DATA_SUCCESS':
+            return action.chartData;
 
         default:
             return state;
