@@ -4,7 +4,19 @@ import './Chart.css';
 
 const Chart = (props) => (
     <Bar
-        data={props.chartData}
+        data={{
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            datasets: [{
+                label: 'Values',
+                data: props.chartData,
+                //backgroundColor: props.barColors,
+                borderWidth:1,
+                borderColor:'#777',
+                //hoverBackgroundColor: props.hoverBarColors,
+                hoverBorderWidth:2,
+                hoverBorderColor:'#000'
+            }]
+        }}
         options={{
             title: {
                 display:true,

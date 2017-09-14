@@ -1,6 +1,6 @@
 export function chartHasErrored(state = false, action) {
     switch (action.type) {
-        case 'ITEMS_HAS_ERRORED':
+        case 'CHART_HAS_ERRORED':
             return action.hasErrored;
 
         default:

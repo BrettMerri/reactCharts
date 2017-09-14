@@ -7,27 +7,6 @@ import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 
 class RandomNumbers extends Component {
 /*
-  componentDidMount() {
-    this.updateChartData();
-  }
-
-  updateChartData() {
-    this.getRandomNumbersData(numbers => {
-      this.setChartData(numbers);
-    });
-  }
-
-  handleRefreshDataClick() {
-    this.setState({chartLoading: true});
-    this.updateChartData();
-  }
-
-  getRandomNumbersData(callback) {
-    fetch('/api/randomnumbers/count/15')
-      .then(res => res.json())
-      .then(data => callback(data));
-  }
-
   setChartData(numbers){
     let xAxisLabels = [];
     let barColors = [];
@@ -68,68 +47,36 @@ class RandomNumbers extends Component {
         default:
       }
     }
-
-    this.setState({
-      chartData: {
-        labels: xAxisLabels,
-        datasets: [{
-            label: 'Values',
-            data: numbers,
-            backgroundColor: barColors,
-            borderWidth:1,
-            borderColor:'#777',
-            hoverBackgroundColor: hoverBarColors,
-            hoverBorderWidth:2,
-            hoverBorderColor:'#000'
-        }]
-      },
-      chartLoading: false
-    });
-  }
-
-  render() {
-    return (
-      <div className="RandomNumbers">
-        <ChartContainer
-          chartData={this.state.chartData}
-          chartLoading={this.state.chartLoading}
-        />
-        <RefreshDataButton
-          handleClick={this.handleRefreshDataClick.bind(this)}
-          chartLoading={this.state.chartLoading}
-        />
-      </div>
-    );
-  }
-
 */
 
   componentDidMount() {
     this.props.fetchData();
   }
 
+  handleRefreshDataClick() {
+    this.props.fetchData();
+  }
+
   render() {
-    if (this.props.hasErrored) {
-      return <p>Sorry! There was an error loading the items</p>;
-    }
-
-    if (this.props.isLoading) {
-        return <p>Loading…</p>;
-    }
-
     return (
-        <ul>
-            {alert(this.props.numbers)}
-        </ul>
+      <div className="RandomNumbers">
+        <ChartContainer
+          chartData={this.props.numbers}
+          chartLoading={this.props.isLoading}
+        />
+        <RefreshDataButton
+          handleClick={this.handleRefreshDataClick.bind(this)}
+          chartLoading={this.props.isLoading}
+        />
+      </div>
     );
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
-      numbers: state.chartData,
-      hasErrored: state.itemsHasErrored,
+      numbers: state.numbers,
+      hasErrored: state.chartHasErrored,
       isLoading: state.chartIsLoading
   };
 };

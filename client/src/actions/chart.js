@@ -38,13 +38,12 @@ export function fetchChartData() {
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-                console.log(response);
                 dispatch(chartIsLoading(false));
 
                 return response;
             })
-            .then((response) => response.json())
-            .then((numbers) => dispatch(chartFetchNumbersSuccess(numbers)))
+            .then(response => response.json())
+            .then(numbers => dispatch(chartFetchNumbersSuccess(numbers)))
             .catch(() => dispatch(chartHasErrored(true)));
     };
 }
