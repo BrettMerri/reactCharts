@@ -8,7 +8,8 @@ import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 class RandomNumbers extends Component {
 
   componentDidMount() {
-    this.props.fetchData();
+    if (Object.keys(this.props.chartData).length === 0)
+      this.props.fetchData();
   }
 
   handleRefreshDataClick() {
