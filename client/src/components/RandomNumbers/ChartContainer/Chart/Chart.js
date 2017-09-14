@@ -5,7 +5,6 @@ import './Chart.css';
 const Chart = (props) => (
     <Bar
         data={{
-            //labels: [xAxisLabels],
             labels: props.chartData.xAxisLabels,
             datasets: [{
                 data: props.chartData.numbers,
