@@ -5,13 +5,13 @@ import RandomNumbers from '../RandomNumbers/RandomNumbers';
 import Lol from '../Lol/Lol';
 
 const Main = () => (
-  <main>
+  <div className="container-fluid">
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/random-numbers' component={RandomNumbers}/>
       <Route path='/lol' component={Lol}/>
     </Switch>
-  </main>
+  </div>
 );
 
 export default Main;

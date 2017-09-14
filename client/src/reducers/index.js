@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import { numbers, chartHasErrored, chartIsLoading } from './chart';
+import { chartData, chartHasErrored, chartIsLoading } from './chart';
+import { lolData, lolHasErrored, lolIsLoading } from './lol';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 export default combineReducers({
-    numbers,
+    chartData,
     chartHasErrored,
-    chartIsLoading
+    chartIsLoading,
+    lolData,
+    lolHasErrored,
+    lolIsLoading,
+    form: reduxFormReducer
 });

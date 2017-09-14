@@ -19,7 +19,7 @@ class RandomNumbers extends Component {
     return (
       <div className="RandomNumbers">
         <ChartContainer
-          chartData={this.props.numbers}
+          chartData={this.props.chartData}
           chartLoading={this.props.isLoading}
         />
         <RefreshDataButton
@@ -27,22 +27,22 @@ class RandomNumbers extends Component {
           chartLoading={this.props.isLoading}
         />
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-      numbers: state.numbers,
+      chartData: state.chartData,
       hasErrored: state.chartHasErrored,
       isLoading: state.chartIsLoading
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
       fetchData: () => dispatch(fetchChartData())
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(RandomNumbers);

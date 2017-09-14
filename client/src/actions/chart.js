@@ -24,7 +24,7 @@ export function errorAfterEightSeconds() {
         setTimeout(() => {
             dispatch(chartHasErrored(true));
         }, 8000);
-    };
+    }
 }
 
 export function fetchChartData() {
