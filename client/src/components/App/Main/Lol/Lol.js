@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLolData } from '../../../../actions/lol';
 import LolForm from './LolForm/LolForm';
+import './Lol.css';
 
 class Lol extends Component {
   submit = (values) => {
-    this.props.fetchData(values.displayName);
+      this.props.fetchData(values.displayName);
   }
 
   render() {
@@ -13,18 +14,41 @@ class Lol extends Component {
 
     if(this.props.lolIsLoading) {
       output = "Loading...";
-    }
-    else if(Object.keys(this.props.lolData).length === 0) {
+    } else if(Object.keys(this.props.lolData).length === 0) {
       output = "";
-    }
-    else {
+    } else {
       output = JSON.stringify(this.props.lolData);
     }
-
     return (
       <div>
         <LolForm onSubmit={this.submit} />
         <p>{output}</p>
+        <table className="table lolTable">
+          <thead className="thead-default">
+            <tr>
+              <th>#</th>
+              <th>Display Name</th>
+              <th>Summoner ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }

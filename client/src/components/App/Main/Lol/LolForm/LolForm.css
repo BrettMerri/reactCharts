@@ -1,0 +1,10 @@
+span.error {
+    color:red;
+    position:absolute;
+}
+.form-group {
+    margin-bottom:0;
+}
+.form-inline {
+    margin-bottom: 25px;
+}
