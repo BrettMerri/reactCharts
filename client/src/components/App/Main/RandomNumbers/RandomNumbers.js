@@ -5,7 +5,6 @@ import ChartContainer from './ChartContainer/ChartContainer'
 import RefreshDataButton from './RefreshDataButton/RefreshDataButton';
 
 class RandomNumbers extends Component {
-
   componentDidMount() {
     if (Object.keys(this.props.chartData).length === 0) // If chartData object is empty
       this.props.fetchData();
