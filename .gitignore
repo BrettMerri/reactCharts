@@ -3,3 +3,6 @@
 
 # testing
 /coverage
+
+# Environment variables
+.env 
