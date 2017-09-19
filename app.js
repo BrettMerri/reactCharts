@@ -28,7 +28,7 @@ const api = require('./routes/api');
 const app = express();
 
 // Port Number
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // CORS middleware
 app.use(cors());
@@ -52,6 +52,6 @@ app.get('*', (req, res) => {
   });
 
 // Start Server
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
     console.log('Server started on port ' + port);
 });
