@@ -23,6 +23,7 @@ class Lol extends Component {
       <div>
         <LolForm onSubmit={this.submit} />
         <p>{output}</p>
+        {/*
         <table className="table lolTable">
           <thead className="thead-default">
             <tr>
@@ -49,6 +50,7 @@ class Lol extends Component {
             </tr>
           </tbody>
         </table>
+        */}
       </div>
     )
   }

@@ -34,12 +34,12 @@ const port = 3001;
 app.use(cors());
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, '/client/public')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 // Body Parser Middleware
 app.use(bodyParser.json());
 
-// Game API's
+// API Route
 app.use('/api', api);
 
 // Index Route
@@ -47,11 +47,9 @@ app.get('/', (req, res) => {
     res.send("Invalid Endpoint");
 });
 
-/*
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/public/index.html'));
-})
-*/
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
 // Start Server
 app.listen(port, () => {
