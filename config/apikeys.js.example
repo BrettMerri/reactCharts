@@ -1,5 +1,0 @@
-// Place API key in here then rename file to apikeys.js
-
-module.exports = {
-    lol: 'API-KEY-HERE'
-}
