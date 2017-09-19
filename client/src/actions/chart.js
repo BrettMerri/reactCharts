@@ -31,7 +31,7 @@ export function fetchChartData() {
     return (dispatch) => {
         dispatch(chartIsLoading(true));
 
-        fetch('http://localhost:3001/api/randomnumbers/count/15')
+        fetch('/api/randomnumbers/count/15')
             .then(response => {
                 if (!response.ok) {
                     throw Error(response.statusText);

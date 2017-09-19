@@ -31,7 +31,7 @@ export function fetchLolData(displayName) {
     return (dispatch) => {
         dispatch(lolIsLoading(true));
 
-        fetch(`http://localhost:3001/api/lol/displayname/${displayName}`)
+        fetch(`/api/lol/displayname/${displayName}`)
             .then(response => {
                 if (!response.ok) {
                     throw Error(response.statusText);
